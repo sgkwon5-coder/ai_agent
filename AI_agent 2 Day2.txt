@@ -1,0 +1,76 @@
+AI_Agent 수업2차
+
+Day 1 2026.06.06
+
+1. Discord developer portal 로그인
+  ㅁ [봇] 토큰 생성
+      [토큰] 초기화 후 토큰 복사
+      [DISCORD_BOT_TOKEN]
+  ㅁ [OAuth2] URL생성(맨 아래)
+      Scope : Bot
+      복 권한 : 메시지 보내기, 스레드에서 메시지 보내기, 파일 첨부, 반응 추가
+      URL
+      https://discord.com/oauth2/authorize?client_id=1512700707017457714&permissions=274877941824&integration_type=0&scope=bot
+
+2. discord.com 접속 후 [새 모임 만들기]
+  ㅁ 왼쪽 창에서 (+)버튼 클릭하여 새로운 모임 생성
+      ㅇ 직접만들기/나와 친구들을 위한 서버
+
+3. 크롬에 URL입력하여 엔터치고 discord에 만들어둔 모임 선택(ex. agent_bot)
+
+4. terminal창에서 Discord plugin 설치
+   > claude --channels plugin:discord@claude-plugins-official --dangerously-skip-permissions
+   인스톨 안되어있다고 나오면,
+   크로드 실행하여 아래 내용입력하여 discord플러그인 설치
+   /plugin install discord@claude-plugins-official
+   나갔다가 위 terminal창 입력한 명령어 다시 실행 (--channels)
+
+5. 1차 교안 7일차 Basic 07 수행
+   bot 토큰 저장위해 다음 내용 명령실행
+   [경로] 경로에 DISCORD_BOT_TOKEN=[토큰] 저장 후 확인을 위해 파일을 열어줘
+   ex.    ~/.claude/channels/discord/.env 경로에 DISCORD_BOT_TOKEN=[DISCORD_BOT_TOKEN] 저장 후 확인을 위해 파일을 열어줘
+
+6. /mcp들어가봐서 discord가 fail이면 엔터해서 reconnect 할지 묻는 화면의 텍스트 복사해서 클로드에게 붙여넣고 해결해달라고 명령입력
+   또는 bun 프로그램 설치되어있는지 확인하고 discord mcp 활용할 수 있도록 path 경로 설정해줘 라고 입력
+
+7. /exit 후 클로드 다시 실행(--channels) 그리고 /mcp들어가서 discord가 disconnect인경우 실행하여 reconnect하면 연결됨
+
+8. disocord 모임에서 agent_bot 누르고 하단 DM보내는 곳에 "안녕"쳐봄
+
+9. 하단에 pairing code를 보여주는데 이를 복사해서 크로드에 입력(/discord:access pair 823558)
+
+10. 클로드가 패어링 코드 입력하면 몇가지 수정을 하고나면 paired되었다고 함. 디스코드 모임창에서도 패어링 되었다고 나옴 학인할 수 있음
+  - 이후 '한국사 조사해서 간략히 요약해줘' 등을 명령할 수 있음
+
+---------------------------------------------------------------------------------------------
+Gemini 가서 Gems 실행(프롬프트 작성, md작성용 별도 생성하기)
+1. 왼편에 안보이면 환경설정가서 Gems 클릭 후 새 Gem 만들기
+2. 이름, 설명 등 입력하고 요청사항에 원하는 내용입력 후 wizard버튼 클릭
+   - 또는 제미나이 새 대화에서 gem을 위한 입력 달라고 입력하여 결과 입력
+     ex. CLAUDE.md 파일을 생성할 젬스 지침 작성해줘
+
+
+============================================================
+  Day2 (github 토큰 활용)
+============================================================
+ ☞ 목적 : 몇개 cli 를 조합해서 코딩을하고 이를 github에 올릴것
+ㅁ GitHub설치 : https://github.com/cli/cli/releases/tag/v2.93.0 들어가서 
+                    "GitHub CLI 2.93.0 windows amd64 installer" msi파일 다운 및 설치
+ㅁ Github 가입(구글로)
+ㅁ Github 연결
+  1. gh auth login --scopes repo,delete_repo,workflow,gist,read:org,admin:public_key,write:packages 실행
+     ? Where do you use GitHub? GitHub.com                                     
+     ? What is your preferred protocol for Git operations on this host? HTTPS  
+     ? Authenticate Git with your GitHub credentials? Yes                      
+     ? How would you like to authenticate GitHub CLI? Login with a web browser 
+  2. 아래 code 제시하면 복사해서 아래 www복사해서 해당 인증키 입력하여 진행 확인
+     ex.  First copy your one-time code: [  FD8B-EE7F  ]
+
+ㅁ Claude 활용
+  1. gh cli 설치 정상적으로 되어 있는지 확인하도록 명령
+  2. skill-creator plugin 설치되었는지 화인, 아니면 설치
+  3. /skill-creator에서 탭 누르고 다음 명령입력
+     > /skill-creator:skill-creator gh cli 기능을 모두 활용할 수 있는 명령어가 입력된 gh_cli 이름의 skill을 제작, 전역경로에 저장된 파일은 해당 경로에 복사해서 확인할 수 있도록 제작 진행
+
+
+
